@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.ipynb_checkpoints/
+# Local artifacts — never commit
+checkpoints/
+training_data/
+output/
+output_*/
+wandb/
+*.log
+.env
