@@ -19,6 +19,7 @@ This repository provides the Flash-WAM model code and the distilled RoboTwin che
 
 - [x] Flash-WAM RoboTwin checkpoint
 - [ ] Distillation code (Flash-WAM + LCM ablations)
+- [ ] Real-world deployment setup on Unitree G1 humanoid
 
 ## 📦 Model Checkpoints
 
