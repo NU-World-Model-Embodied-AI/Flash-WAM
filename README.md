@@ -6,6 +6,10 @@
   <a href="LICENSE.txt"><img src="https://img.shields.io/badge/License-Apache--2.0-green"></a>
 </p>
 
+<p align="center">
+  <img src="assets/teaser.png" width="100%">
+</p>
+
 Flash-WAM is a modality-aware step-distillation framework for joint video–action world models. It distills each modality with a consistency function matched to its noise regime — a linear-gradient-scaling choice for the low-noise action stream and a variance-preserving choice for the high-noise video stream — compressing LingBot-VA inference to a single step per modality. On RoboTwin 2.0 this yields up to a **23× speedup** (8.1 s → 348 ms per chunk) while preserving teacher-level task success.
 
 This repository provides the Flash-WAM model code and the distilled RoboTwin checkpoint.
