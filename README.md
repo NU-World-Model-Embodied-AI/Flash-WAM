@@ -57,6 +57,38 @@ DISTILL_MODE=video_action_aware bash distillation/run.sh   # video-only LCM + re
 
 Key knobs (see `distillation/config.py`): `NGPU`, `OUTPUT_DIR`, `num_ddim_timesteps` (student video steps), `num_ddim_timesteps_action` (student action steps), `cfg_min`/`cfg_max` (teacher CFG range).
 
+## 📊 Results
+
+### Ablation — RoboTwin 2.0 (success rate %, 50 tasks, by task horizon)
+
+Flash-WAM is the only LCM-based strategy that preserves teacher-level accuracy across both NFE budgets and all horizons: naive joint LCM collapses, and the video-only variants trail.
+
+| Method | Nᵥ | Nₐ | H1 Clean | H1 Rand | H2 Clean | H2 Rand | H3 Clean | H3 Rand | Avg Clean | Avg Rand |
+| :--- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| LingBot-VA (teacher) | 25 | 50 | 94.18 | 93.56 | 90.35 | 86.95 | 93.22 | 93.28 | 92.93 | 91.55 |
+| Video-only LCM | 1 | 2 | 87.10 | 82.73 | 73.13 | 68.19 | 62.50 | 68.25 | 80.66 | 76.92 |
+| Video-only LCM + reg. | 1 | 2 | 91.53 | 88.50 | 83.00 | 74.69 | 68.00 | 62.75 | 86.92 | 82.02 |
+| Naive Joint LCM | 1 | 2 | 41.00 | 35.13 | 4.00 | 3.13 | 0.00 | 0.00 | 25.88 | 20.08 |
+| **Flash-WAM** | 1 | 2 | **92.30** | **88.47** | **84.88** | **76.63** | **73.50** | **63.25** | **88.42** | **82.66** |
+| Video-only LCM | 1 | 1 | 85.57 | 78.17 | 72.06 | 61.81 | 43.75 | 34.75 | 77.90 | 69.46 |
+| Video-only LCM + reg. | 1 | 1 | 66.87 | 61.07 | 39.19 | 35.56 | 10.25 | 4.75 | 53.48 | 48.40 |
+| Naive Joint LCM | 1 | 1 | 54.63 | 46.00 | 21.56 | 15.63 | 0.00 | 0.00 | 39.68 | 32.96 |
+| **Flash-WAM** | 1 | 1 | **87.30** | **86.93** | **78.44** | **72.63** | **63.50** | **60.75** | **82.56** | **80.26** |
+
+### Real-World — Unitree G1 (success rate %, 3 tasks × 10 rollouts)
+
+T1: open pot lid and place a potato inside · T2: pick the red bottle (with a yellow distractor) · T3: pick the pink object and place it on the target. See [`demo/`](demo/) for rollout videos.
+
+| Method | Nᵥ / Nₐ | T1 | T2 | T3 | Average |
+| :--- | :-: | :-: | :-: | :-: | :-: |
+| LingBot-VA | 3 / 10 | 50 | 70 | 80 | 66.7 |
+| LingBot-VA (reduced NFE) | 1 / 2 | 30 | 30 | 60 | 40.0 |
+| LingBot-VA + Video-only LCM | 1 / 2 | 30 | 50 | 50 | 43.3 |
+| **Flash-WAM** | 1 / 2 | **50** | **60** | **70** | **60.0** |
+| LingBot-VA (reduced NFE) | 1 / 1 | 10 | 30 | 30 | 23.3 |
+| LingBot-VA + Video-only LCM | 1 / 1 | 20 | 40 | 40 | 33.3 |
+| **Flash-WAM** | 1 / 1 | **40** | **50** | **60** | **50.0** |
+
 ## 📝 Citation
 
 ```bibtex
