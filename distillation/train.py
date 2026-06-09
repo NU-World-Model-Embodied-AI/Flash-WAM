@@ -14,7 +14,7 @@ The ONLY differences from native training are:
   2. Teacher uses CFG (scale sampled from [2, 10]) with two forward passes
   3. Student and Target Student do NOT use CFG
   4. Loss = Huber on consistency-function output, not MSE on v-prediction
-  5. k = num_train_timesteps / num_ddim_timesteps = 1000 / 25 = 40
+  5. k = num_train_timesteps / num_ddim_timesteps = 1000 / 2 = 500
      (the stride in the 1000-step schedule for constructing training pairs)
 """
 

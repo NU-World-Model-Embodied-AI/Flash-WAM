@@ -77,7 +77,6 @@ cfg.num_train_timesteps = 1000
 # LCM Distillation
 # ============================================================
 cfg.num_ddim_timesteps = 2        # 2 anchor points → k=500 stride (target: 2-step generation)
-cfg.lcm_skip_k = 6               # teacher jumps k anchors per iteration (5-10)
 
 # Distillation mode: "flashwam" | "joint" | "video" | "video_action_aware" | "action"
 #   flashwam           — Flash-WAM (the paper's method): modality-aware joint

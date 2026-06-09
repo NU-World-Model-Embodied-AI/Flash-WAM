@@ -55,7 +55,7 @@ DISTILL_MODE=video              bash distillation/run.sh   # video-only LCM
 DISTILL_MODE=video_action_aware bash distillation/run.sh   # video-only LCM + reg
 ```
 
-Key knobs (see `distillation/config.py`): `NGPU`, `OUTPUT_DIR`, `num_ddim_timesteps` (student video steps), `num_ddim_timesteps_action` (student action steps), `lcm_skip_k`, `cfg_min`/`cfg_max` (teacher CFG range).
+Key knobs (see `distillation/config.py`): `NGPU`, `OUTPUT_DIR`, `num_ddim_timesteps` (student video steps), `num_ddim_timesteps_action` (student action steps), `cfg_min`/`cfg_max` (teacher CFG range).
 
 ## 📝 Citation
 
