@@ -3,7 +3,7 @@ Flash-WAM: Modality-Aware LCM Distillation for LingBot-VA (joint video+action).
 
 DISTILL_MODE selects the variant: flashwam (the paper's modality-aware method),
 joint (naive joint LCM), video (video-only LCM), video_action_aware (video-only
-LCM + action regularizer), action (action-only x0).
+LCM + action regularizer), action (action-only consistency).
 
 Design: The training pipeline is nearly identical to wan_va/train.py.
 All noise addition, timestep sampling, chunk_size, window_size sampling
@@ -509,7 +509,7 @@ class LCMVideoDistiller:
         if self.distill_action:
             student_action_v = self._extract_action_v(student_action_v_seq, num_frames)
             if self.action_distill_mode == "x0":
-                # Direct x_0 prediction: x_0 = x_σ - σ · v
+                # Action consistency function: f = x_σ - σ · v
                 sigma_s_a_5d = sigma_start_action[None, None, :, None, None].to(student_action_v)
                 student_action_pred = input_dict['action_dict']['noisy_latents'] - \
                                       sigma_s_a_5d * student_action_v

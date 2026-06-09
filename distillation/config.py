@@ -81,12 +81,12 @@ cfg.lcm_skip_k = 6               # teacher jumps k anchors per iteration (5-10)
 
 # Distillation mode: "flashwam" | "joint" | "video" | "video_action_aware" | "action"
 #   flashwam           — Flash-WAM (the paper's method): modality-aware joint
-#                        distillation = video consistency + action x0 distillation
+#                        distillation = video consistency + action consistency
 #                        + action MSE regularizer
-#   joint              — naive joint LCM: video consistency + action x0 loss (ablation)
+#   joint              — naive joint LCM: video consistency + action consistency (ablation)
 #   video              — video-only LCM consistency loss (ablation)
 #   video_action_aware — video-only LCM + small action MSE regularizer (ablation)
-#   action             — action-only x0 distillation, student init = video-LCM checkpoint
+#   action             — action-only consistency, student init = video-LCM checkpoint
 cfg.distill_mode = os.environ.get("DISTILL_MODE", "flashwam")
 
 _mode = cfg.distill_mode
@@ -95,7 +95,7 @@ cfg.distill_action = _mode in ("action", "joint", "flashwam")
 cfg.action_aware = _mode in ("video_action_aware", "flashwam")
 cfg.num_ddim_timesteps_action = 2        # k_action = 1000/2 = 500
 cfg.action_loss_weight = 1.0
-cfg.action_distill_mode = "x0"          # "x0" (direct) or "consistency" (wrapped)
+cfg.action_distill_mode = "x0"          # action consistency function parametrization
 cfg.action_aware_weight = 0.01          # small weight for action-aware regularizer
 
 # ============================================================
