@@ -1,6 +1,6 @@
 """
 Quick smoke test: verify all imports, model loading, and one forward pass.
-Run with: python distill_video_v2/test_imports.py
+Run with: python distillation/test_imports.py
 """
 
 import sys

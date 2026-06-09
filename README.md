@@ -47,15 +47,15 @@ export TEACHER_PATH=/path/to/lingbot-va-posttrain-robotwin
 export DATASET_PATH=/path/to/robotwin-clean-and-aug-lerobot
 
 # Flash-WAM (the paper's modality-aware joint method)
-DISTILL_MODE=flashwam bash distill_video_v2/run.sh
+DISTILL_MODE=flashwam bash distillation/run.sh
 
 # LCM ablations from the paper
-DISTILL_MODE=joint              bash distill_video_v2/run.sh   # naive joint LCM
-DISTILL_MODE=video              bash distill_video_v2/run.sh   # video-only LCM
-DISTILL_MODE=video_action_aware bash distill_video_v2/run.sh   # video-only LCM + reg
+DISTILL_MODE=joint              bash distillation/run.sh   # naive joint LCM
+DISTILL_MODE=video              bash distillation/run.sh   # video-only LCM
+DISTILL_MODE=video_action_aware bash distillation/run.sh   # video-only LCM + reg
 ```
 
-Key knobs (see `distill_video_v2/config.py`): `NGPU`, `OUTPUT_DIR`, `num_ddim_timesteps` (student video steps), `num_ddim_timesteps_action` (student action steps), `lcm_skip_k`, `cfg_min`/`cfg_max` (teacher CFG range).
+Key knobs (see `distillation/config.py`): `NGPU`, `OUTPUT_DIR`, `num_ddim_timesteps` (student video steps), `num_ddim_timesteps_action` (student action steps), `lcm_skip_k`, `cfg_min`/`cfg_max` (teacher CFG range).
 
 ## 📝 Citation
 
