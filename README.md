@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2606.05254"><img src="https://img.shields.io/static/v1?label=Paper&message=arXiv&color=red&logo=arxiv"></a>
   <a href="https://flashwam.github.io"><img src="https://img.shields.io/badge/Project-Website-blue"></a>
-  <a href="LICENSE.txt"><img src="https://img.shields.io/badge/License-Apache--2.0-green"></a>
+  <a href="LICENSE.txt"><img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey"></a>
 </p>
 
 <p align="center">
@@ -105,4 +105,4 @@ T1: open pot lid and place a potato inside · T2: pick the red bottle (with a ye
 
 ## Acknowledgements
 
-Built on [LingBot-VA](https://github.com/Robbyant/lingbot-va) and evaluated on [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin). Licensed under Apache-2.0.
+Built on [LingBot-VA](https://github.com/Robbyant/lingbot-va) (Apache-2.0) and evaluated on [RoboTwin 2.0](https://github.com/RoboTwin-Platform/RoboTwin). Flash-WAM's own code, documentation, and demos are released under [CC BY-NC 4.0](LICENSE.txt) (non-commercial use only); the bundled LingBot-VA components in `wan_va/` remain under Apache-2.0.
