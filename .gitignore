@@ -11,3 +11,11 @@ output_*/
 wandb/
 *.log
 .env
+
+# Local editor and agent state
+.vscode/
+.agents/
+
+# Local Hugging Face download/cache state
+.hf_download_state/
+hf_assets/

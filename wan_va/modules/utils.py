@@ -42,10 +42,12 @@ def load_transformer(
     transformer_path,
     torch_dtype,
     torch_device,
+    **kwargs,
 ):
     model = WanTransformer3DModel.from_pretrained(
         transformer_path,
         torch_dtype=torch_dtype,
+        **kwargs,
     )
     return model.to(torch_device)
 
